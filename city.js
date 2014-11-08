@@ -5,18 +5,28 @@ var City = function(config){
 	this.config = config
 }
 
-City.prototype.init = function(config){
+City.prototype.init = function(config) {
 	this.config = config
 }
 
-City.prototype._setCity = function(cityArr){
+/**
+ * setting city array
+ * @param {array} cityArr  city list
+ */
+City.prototype._setCity = function(cityArr) {
 	this.config.city = cityArr;
 }
 
-City.prototype.getCityList = function(file, callback){
+/**
+ * get city list from file 
+ * @param  {string}   file     [file path]
+ * @param  {Function} callback [return function]
+ * @return {Function}            [using callback function]
+ */
+City.prototype.getCityList = function(file, callback) {
 	var self = this;
 
-	fs.readFile(file, 'utf-8', function(err, data){
+	fs.readFile(file, 'utf-8', function(err, data) {
 		var dataArray = [];
 		if (err) {
 			console.log(err);
@@ -33,7 +43,7 @@ City.prototype.getCityList = function(file, callback){
  * @param  {array} data  city list
  * @return {array}      sequenced city list
  */
-City.prototype._getSequenceArray = function(data){
+City.prototype._getSequenceArray = function(data) {
 	var dataList = data.split('\n');
 	var cityArr = [];
 	var preValue = 0;
